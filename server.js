@@ -23,37 +23,37 @@ const client = new Twitter({
 });
 
 // USER TIMELINE SEARCH
-// const params = { screen_name: "i4nw" };
-// const url = "statuses/user_timeline";
+const params = { screen_name: "i4nw" };
+const url = "statuses/user_timeline";
 
 // HASHTAG SEARCH
 // const params = {q: '#etherium'};
 // const url = 'search/tweets.json';
 
-// client.get(url, params, function (error, tweets, response) {
-//   if (error) {
-//     console.log("error", error);
-//     // console.log('response', response);
-//   } else {
-//     console.log(tweets);
-//     let formattedTweets = Array.isArray(tweets) ? tweets : tweets.statuses;
-//     formattedTweets.forEach((tweet, i) => console.log(`${i}. ${tweet.text}\n`));
-//   }
-// });
+client.get(url, params, function (error, tweets, response) {
+  if (error) {
+    console.log("error", error);
+    // console.log('response', response);
+  } else {
+    console.log(tweets);
+    let formattedTweets = Array.isArray(tweets) ? tweets : tweets.statuses;
+    formattedTweets.forEach((tweet, i) => console.log(`${i}. ${tweet.text}\n`));
+  }
+});
 
 /***************************************************************************
  * STREAMING API
  ***************************************************************************/
 
-client.stream("statuses/filter", { track: "#makingthejump" }, function (
-  stream
-) {
-  stream.on("data", function (event) {
-    console.log("data", event);
-    console.log(event && `${event.text} - ${event.user.screen_name}`);
-  });
+// client.stream("statuses/filter", { track: "#makingthejump" }, function (
+//   stream
+// ) {
+//   stream.on("data", function (event) {
+//     console.log("data", event);
+//     console.log(event && `${event.text} - ${event.user.screen_name}`);
+//   });
 
-  stream.on("error", function (error) {
-    throw error;
-  });
-});
+//   stream.on("error", function (error) {
+//     throw error;
+//   });
+// });
